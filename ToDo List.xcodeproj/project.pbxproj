@@ -20,6 +20,12 @@
 		D79C0EE82CF08AA4001FCB9E /* ToDoListBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EE32CF08AA4001FCB9E /* ToDoListBuilder.swift */; };
 		D79C0EE92CF08AA4001FCB9E /* ToDoListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EE42CF08AA4001FCB9E /* ToDoListInteractor.swift */; };
 		D79C0EEA2CF08AA4001FCB9E /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EE52CF08AA4001FCB9E /* ToDoListView.swift */; };
+		D79C0EED2CF09B8D001FCB9E /* CellModellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EEC2CF09B8D001FCB9E /* CellModellProtocol.swift */; };
+		D79C0EEF2CF09CB1001FCB9E /* TaskCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EEE2CF09CB1001FCB9E /* TaskCellModel.swift */; };
+		D79C0EF12CF09EB2001FCB9E /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EF02CF09EB2001FCB9E /* TaskTableViewCell.swift */; };
+		D79C0EF42CF0A277001FCB9E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D79C0EF32CF0A277001FCB9E /* SnapKit */; };
+		D79C0EF82CF0B3F3001FCB9E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D79C0EF72CF0B3F3001FCB9E /* Alamofire */; };
+		D79C0EFC2CF0DE40001FCB9E /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EFB2CF0DE40001FCB9E /* SearchTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +63,10 @@
 		D79C0EE32CF08AA4001FCB9E /* ToDoListBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListBuilder.swift; sourceTree = "<group>"; };
 		D79C0EE42CF08AA4001FCB9E /* ToDoListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListInteractor.swift; sourceTree = "<group>"; };
 		D79C0EE52CF08AA4001FCB9E /* ToDoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListView.swift; sourceTree = "<group>"; };
+		D79C0EEC2CF09B8D001FCB9E /* CellModellProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModellProtocol.swift; sourceTree = "<group>"; };
+		D79C0EEE2CF09CB1001FCB9E /* TaskCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellModel.swift; sourceTree = "<group>"; };
+		D79C0EF02CF09EB2001FCB9E /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		D79C0EFB2CF0DE40001FCB9E /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +74,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D79C0EF42CF0A277001FCB9E /* SnapKit in Frameworks */,
+				D79C0EF82CF0B3F3001FCB9E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +174,8 @@
 		D79C0EDD2CF088F0001FCB9E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				D79C0EEC2CF09B8D001FCB9E /* CellModellProtocol.swift */,
+				D79C0EEE2CF09CB1001FCB9E /* TaskCellModel.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -199,6 +213,8 @@
 		D79C0EEB2CF08ADD001FCB9E /* UI-Components */ = {
 			isa = PBXGroup;
 			children = (
+				D79C0EF02CF09EB2001FCB9E /* TaskTableViewCell.swift */,
+				D79C0EFB2CF0DE40001FCB9E /* SearchTextField.swift */,
 			);
 			path = "UI-Components";
 			sourceTree = "<group>";
@@ -219,6 +235,10 @@
 			dependencies = (
 			);
 			name = "ToDo List";
+			packageProductDependencies = (
+				D79C0EF32CF0A277001FCB9E /* SnapKit */,
+				D79C0EF72CF0B3F3001FCB9E /* Alamofire */,
+			);
 			productName = "ToDo List";
 			productReference = D79C0EA42CF0888C001FCB9E /* ToDo List.app */;
 			productType = "com.apple.product-type.application";
@@ -291,6 +311,10 @@
 				Base,
 			);
 			mainGroup = D79C0E9B2CF0888C001FCB9E;
+			packageReferences = (
+				D79C0EF22CF0A277001FCB9E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				D79C0EF62CF0B3F3001FCB9E /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = D79C0EA52CF0888C001FCB9E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -335,12 +359,16 @@
 			files = (
 				D79C0EE72CF08AA4001FCB9E /* ToDoListRouter.swift in Sources */,
 				D79C0EE62CF08AA4001FCB9E /* ToDoListPresenter.swift in Sources */,
+				D79C0EF12CF09EB2001FCB9E /* TaskTableViewCell.swift in Sources */,
 				D79C0EEA2CF08AA4001FCB9E /* ToDoListView.swift in Sources */,
 				D79C0EE92CF08AA4001FCB9E /* ToDoListInteractor.swift in Sources */,
+				D79C0EEF2CF09CB1001FCB9E /* TaskCellModel.swift in Sources */,
 				D79C0EA82CF0888C001FCB9E /* AppDelegate.swift in Sources */,
 				D79C0EE82CF08AA4001FCB9E /* ToDoListBuilder.swift in Sources */,
 				D79C0EAA2CF0888C001FCB9E /* SceneDelegate.swift in Sources */,
+				D79C0EED2CF09B8D001FCB9E /* CellModellProtocol.swift in Sources */,
 				D79C0EB22CF0888C001FCB9E /* ToDo_List.xcdatamodeld in Sources */,
+				D79C0EFC2CF0DE40001FCB9E /* SearchTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,6 +708,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D79C0EF22CF0A277001FCB9E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		D79C0EF62CF0B3F3001FCB9E /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire?ysclid=m3sqd8ps2u204310908";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D79C0EF32CF0A277001FCB9E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D79C0EF22CF0A277001FCB9E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		D79C0EF72CF0B3F3001FCB9E /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D79C0EF62CF0B3F3001FCB9E /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D79C0EB02CF0888C001FCB9E /* ToDo_List.xcdatamodeld */ = {
