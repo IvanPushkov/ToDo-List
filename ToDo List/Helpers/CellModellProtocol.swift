@@ -12,4 +12,6 @@ protocol CellModellProtocol{
     var description: String  {get set}
     var date: Date {get set}
     var status: Status {get set}
+    
+    func changeStatus()
 }

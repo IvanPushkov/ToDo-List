@@ -19,4 +19,17 @@ class TaskCellModel: CellModellProtocol{
         self.date = date
         self.status = status
     }
+    func formateDate() -> String{
+       let formater = DateFormatter()
+       formater.dateFormat = "MM/dd/yyyy"
+       let stringDate = formater.string(from: date)
+       return stringDate
+   }
+    func changeStatus() {
+        if status == .done{
+            status = .notDone
+        } else{
+            status = .done
+        }
+    }
 }

@@ -10,14 +10,17 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+   
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let scene = (scene as? UIWindowScene) else { return }
         let rootVC =  ToDoListBuilder.build()
-        let navController = UINavigationController(rootViewController: rootVC)
-        window = UIWindow(windowScene: scene)
-        window?.rootViewController = navController
+        let tabBar = CustomTabBar()
+        tabBar.viewControllers = [rootVC]
+        let navigationController = UINavigationController(rootViewController: tabBar)
+        
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

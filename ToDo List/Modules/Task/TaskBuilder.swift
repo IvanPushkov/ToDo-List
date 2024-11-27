@@ -1,20 +1,19 @@
 //  
-//  ToDoListBuilder.swift
+//  TaskBuilder.swift
 //  ToDo List
 //
-//  Created by Ivan Pushkov on 22.11.2024.
+//  Created by Ivan Pushkov on 25.11.2024.
 //
 
 import UIKit
 
-final class ToDoListBuilder {
+final class TaskBuilder {
     
     static func build() -> UIViewController {
-        let view = ToDoListView()
-        let interactor = ToDoListInteractor()
-        let router = ToDoListRouter()
-        let presenter = ToDoListPresenter()
-        
+        let view = TaskView()
+        let interactor = TaskInteractor()
+        let router = TaskRouter()
+        let presenter = TaskPresenter()
         presenter.view = view
         presenter.router = router
         presenter.interactor = interactor
