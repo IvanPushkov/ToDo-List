@@ -1,47 +1,33 @@
 
 import UIKit
-import Speech
+
 
 protocol ToDoListViewProtocol : AnyObject {
     var presenter: ToDoListPresenterProtocol? { get set }
     func setUpMainView()
-    func setUpSearchTextField()
-    func setUpTitleLabel()
-    func setUpTableView()
     func reloadCellAt(index: [IndexPath])
     func switchMicrophone()
     func checkStatusMicrophone() -> Bool
     func setTextToTextField(_ text: String?)
     func reloadTableView()
+    func getIndexPathCellAtPoint(_ point: CGPoint) -> IndexPath?
+    func showAlert()
 }
 
 final class ToDoListView: UIViewController {
     var presenter: ToDoListPresenterProtocol?
-    var toDoListTableView: UITableView?
-    var titleLabel: TaskTitleLabel!
-    var searchTextField: SearchTextField!
-    var microPhoneButton = MicroPhoneButton()
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        presenter?.viewIsReadyToSetUp()
-    }
-}
-//MARK: - ToDoListViewProtocol
-extension ToDoListView: ToDoListViewProtocol {
-    func setUpMainView(){
-        self.dismissKeyboard()
-        self.view.backgroundColor = .black
-    }
-    func setUpTitleLabel(){
+    
+    private lazy var titleLabel: TaskTitleLabel = {
         let label = TaskTitleLabel()
         view.addSubview(label)
         label.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).inset(30)
             make.leading.equalToSuperview().inset(18)
         }
-        titleLabel = label
-    }
-    func setUpSearchTextField(){
+        return label
+    }()
+    
+    private lazy var searchTextField: SearchTextField = {
         let textField = SearchTextField()
         view.addSubview(textField)
         textField.rightView = microPhoneButton
@@ -53,12 +39,10 @@ extension ToDoListView: ToDoListViewProtocol {
             make.height.equalTo(36)
         }
         textField.addTarget(self, action: #selector(textWasEntered), for: .editingChanged)
-        searchTextField = textField
-    }
-    @objc func textWasEntered(){
-        presenter?.textWasEntered(searchTextField.text)
-    }
-    func setUpTableView(){
+        return textField
+    }()
+    
+    private lazy var toDoListTableView: UITableView  = {
         let tableView = UITableView()
         view.addSubview(tableView)
         tableView.dataSource = self
@@ -71,12 +55,27 @@ extension ToDoListView: ToDoListViewProtocol {
             make.top.equalTo(searchTextField.snp.bottom).offset(30)
             make.bottom.equalToSuperview().inset(100)
         }
-        toDoListTableView = tableView
+        let longTouchGest = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        tableView.addGestureRecognizer(longTouchGest)
+         return tableView
+    }()
+    private lazy var microPhoneButton = MicroPhoneButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        presenter?.viewIsReadyToSetUp()
+    }
+}
+//MARK: - ToDoListViewProtocol
+extension ToDoListView: ToDoListViewProtocol {
+    func setUpMainView(){
+        self.dismissKeyboard()
+        self.view.backgroundColor = .black
+        _ = titleLabel
+        _ = searchTextField
+        _ = toDoListTableView
     }
     
-    @objc func microPhoneTouch(){
-        presenter?.microPhoneTouch()
-    }
     func switchMicrophone(){
         microPhoneButton.microphoneSwitch()
     }
@@ -87,7 +86,36 @@ extension ToDoListView: ToDoListViewProtocol {
         searchTextField.text = text
     }
     func reloadTableView(){
-        toDoListTableView?.reloadData()
+        toDoListTableView.reloadData()
+        
+    }
+    func showAlert(){
+        let editAlert = EditAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        editAlert.addAlertActionWith(removeAction: removeButtonTouch, editAction: editButtonTouch)
+        present(editAlert, animated: true)
+    }
+    private func removeButtonTouch(){
+        presenter?.removeButonWasTouch()
+    }
+    private func editButtonTouch(){
+        presenter?.editButtonWasTouch()
+    }
+    func getIndexPathCellAtPoint(_ point: CGPoint) -> IndexPath?{
+     let indexPath = toDoListTableView.indexPathForRow(at: point)
+        return indexPath
+    }
+    
+    //MARK: - Objc funcs
+    @objc func handleLongPress(_ gesture: UILongPressGestureRecognizer){
+        let longTouchIsBegan = (gesture.state == .began)
+        let point = gesture.location(in: toDoListTableView)
+        presenter?.longTouch(longTouchIsBegan, point)
+    }
+    @objc func microPhoneTouch(){
+        presenter?.microPhoneTouch()
+    }
+    @objc func textWasEntered(){
+        presenter?.textWasEntered(searchTextField.text)
     }
     
 }
@@ -112,9 +140,7 @@ extension ToDoListView: UITableViewDelegate{
     
     
     func reloadCellAt(index: [IndexPath]){
-        if let tableView = toDoListTableView{
-            tableView.reloadRows(at: index, with: .automatic)
-        }
+        toDoListTableView.reloadRows(at: index, with: .automatic)
     }
     
 }

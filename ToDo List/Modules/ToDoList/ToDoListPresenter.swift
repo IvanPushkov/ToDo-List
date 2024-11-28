@@ -23,6 +23,9 @@ protocol ToDoListPresenterProtocol : AnyObject {
     func updateTaskStatusAt(_ index: Int)
     func setTextToTextField(_ text: String?)
     func textWasEntered(_ text: String?)
+    func longTouch(_ longTouchIsBegan: Bool, _ point: CGPoint)
+    func removeButonWasTouch()
+    func editButtonWasTouch()
 }
 
 final class ToDoListPresenter: ToDoListPresenterProtocol {
@@ -33,9 +36,6 @@ final class ToDoListPresenter: ToDoListPresenterProtocol {
     var interactor: ToDoListInteractorProtocol?
     func viewIsReadyToSetUp(){
         view?.setUpMainView()
-        view?.setUpTitleLabel()
-        view?.setUpSearchTextField()
-        view?.setUpTableView()
     }
     func getCellModelFor(indexPath: IndexPath)-> TaskCellModel{
         let index = indexPath.row
@@ -49,6 +49,7 @@ final class ToDoListPresenter: ToDoListPresenterProtocol {
         return interactor!.getNumberOfTask()
     }
     func tabBarWasTouched(){
+        interactor?.cleanSelectedTask()
         router?.toTaskView()
     }
     func wasTouchToCellAt(_ indexPath: IndexPath){
@@ -72,4 +73,22 @@ final class ToDoListPresenter: ToDoListPresenterProtocol {
         interactor?.filterCellModelsWith(text)
         view?.reloadTableView()
     }
+    func longTouch(_ longTouchIsBegan: Bool, _ point: CGPoint){
+        if longTouchIsBegan{
+            if let indexPath = view?.getIndexPathCellAtPoint(point){
+                view?.showAlert()
+                let index = indexPath.row
+                interactor?.saveIndexOfSelectedCell(index)
+            }
+        }
+    }
+    func removeButonWasTouch(){
+        interactor?.removeCell()
+        view?.reloadTableView()
+    }
+    
+    func editButtonWasTouch(){
+        router?.toTaskView()
+    }
+   
 }

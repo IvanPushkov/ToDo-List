@@ -8,12 +8,12 @@
 import Foundation
 
 class TaskCellModel: CellModellProtocol{
-    var title: String
-    var description: String
-    var date: Date
-    var status: Status
+    var title: String?
+    var description: String?
+    var date: Date?
+    var status: Status?
     
-    init(title: String, description: String, date: Date, status: Status) {
+    init(title: String?, description: String?, date: Date?, status: Status?) {
         self.title = title
         self.description = description
         self.date = date
@@ -21,8 +21,8 @@ class TaskCellModel: CellModellProtocol{
     }
     func formateDate() -> String{
        let formater = DateFormatter()
-       formater.dateFormat = "MM/dd/yyyy"
-       let stringDate = formater.string(from: date)
+       formater.dateFormat = "MM/dd/yy"
+        let stringDate = formater.string(from: date ?? .now ) 
        return stringDate
    }
     func changeStatus() {

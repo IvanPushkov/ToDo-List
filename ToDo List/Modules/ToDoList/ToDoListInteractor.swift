@@ -16,14 +16,15 @@ protocol ToDoListInteractorProtocol : AnyObject{
     func changeStatusCellAt(index: Int)
     func microphoneActionWith(_ isRecording: Bool)
     func filterCellModelsWith(_ text: String?)
+    func saveIndexOfSelectedCell(_ index: Int)
+    func removeCell()
+    func cleanSelectedTask()
 }
 
 final class ToDoListInteractor: ToDoListInteractorProtocol {
-   
-
     weak var presenter: ToDoListPresenterProtocol?
     let voiceManager = VoiceInputManager()
-    var storageManager = StorageManager()
+    var storageManager = StorageManager.shared
     lazy var corentTaskList = self.storageManager.getTaskList()
     //MARK: - Content Settings
     func getNumberOfrows() -> Int{
@@ -53,11 +54,28 @@ final class ToDoListInteractor: ToDoListInteractorProtocol {
     }
     
     func changeStatusCellAt(index: Int) {
-        let corentCellModel = corentTaskList[index]
-        let storageIndex = storageManager.getIndexOf(corentCellModel)
+        let storageIndex = getOriginIndex(index)
         storageManager.changeStatusTaskAt(storageIndex)
         presenter?.updateTaskStatusAt(index)
     }
+    private func getOriginIndex(_ index: Int) -> Int{
+        let corentCellModel = corentTaskList[index]
+        let storageIndex = storageManager.getIndexOf(corentCellModel)
+        return storageIndex
+    }
+    //MARK: - Alert Settings
+    func saveIndexOfSelectedCell(_ index: Int){
+        let selectedIndex = getOriginIndex(index)
+        storageManager.saveSelectedIndex(selectedIndex)
+    }
+    func removeCell(){
+        storageManager.removeTaskAt(index: storageManager.getSelectedIndex()!)
+        corentTaskList = storageManager.getTaskList()
+    }
+    func cleanSelectedTask(){
+        
+    }
+    
      
    //MARK: - Microphone Settings
     func microphoneActionWith(_ isRecording: Bool){
@@ -82,8 +100,8 @@ final class ToDoListInteractor: ToDoListInteractorProtocol {
         if let text = text, !text.isEmpty{
             corentTaskList = storageManager.getTaskList().filter{ model in
                 model.formateDate().range(of: text, options: .caseInsensitive) != nil ||
-                model.title.range(of: text, options: .caseInsensitive) != nil ||
-                model.description.range(of: text, options: .caseInsensitive) != nil
+                model.title?.range(of: text, options: .caseInsensitive) != nil ||
+                model.description?.range(of: text, options: .caseInsensitive) != nil
             }
         }
         else{

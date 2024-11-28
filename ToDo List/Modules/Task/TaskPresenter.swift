@@ -11,10 +11,15 @@ protocol TaskPresenterProtocol : AnyObject {
     var view: TaskViewProtocol? { get set }
     var router: TaskRouterProtocol? { get set }
     var interactor: TaskInteractorProtocol? { get set }
+    func getTaskModel() -> TaskCellModel
 }
 
 final class TaskPresenter: TaskPresenterProtocol {
     weak var view: TaskViewProtocol?
     var router: TaskRouterProtocol?
     var interactor: TaskInteractorProtocol?
+    
+    func getTaskModel() -> TaskCellModel{
+        (interactor?.getCorentTaskModel())!
+    }
 }

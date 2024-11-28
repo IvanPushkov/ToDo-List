@@ -30,10 +30,10 @@ class TaskTableViewCell: UITableViewCell{
         dateLabel.text = date
         descriptionLabel.text = newCellModel.description
         titleLabel.text = newCellModel.title
-        if let image = UIImage(named: newCellModel.status.rawValue){
+        if let image = UIImage(named: newCellModel.status!.rawValue){
             statusImageView.image = image
         }
-        setStyleFor(newCellModel.status)
+        setStyleFor(newCellModel.status!)
     }
     
     private func setStyleFor(_ status: Status){

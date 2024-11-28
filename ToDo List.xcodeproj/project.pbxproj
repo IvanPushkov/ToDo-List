@@ -14,6 +14,7 @@
 		D79501682CF4C8C5006B4421 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79501632CF4C8C5006B4421 /* TaskView.swift */; };
 		D795016A2CF4CB48006B4421 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79501692CF4CB48006B4421 /* StorageManager.swift */; };
 		D795016C2CF62FBC006B4421 /* VoiceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795016B2CF62FBC006B4421 /* VoiceManager.swift */; };
+		D795016E2CF76187006B4421 /* EditAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795016D2CF76187006B4421 /* EditAlertController.swift */; };
 		D79C0EA82CF0888C001FCB9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EA72CF0888C001FCB9E /* AppDelegate.swift */; };
 		D79C0EAA2CF0888C001FCB9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EA92CF0888C001FCB9E /* SceneDelegate.swift */; };
 		D79C0EB22CF0888C001FCB9E /* ToDo_List.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D79C0EB02CF0888C001FCB9E /* ToDo_List.xcdatamodeld */; };
@@ -38,6 +39,9 @@
 		D79C0F032CF47368001FCB9E /* TaskTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0F022CF47368001FCB9E /* TaskTitleLabel.swift */; };
 		D79C0F052CF483CF001FCB9E /* MicroPhoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0F042CF483CF001FCB9E /* MicroPhoneButton.swift */; };
 		D79C0F072CF4A709001FCB9E /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79C0F062CF4A709001FCB9E /* CustomTabBar.swift */; };
+		D7D3365F2CF788C400827548 /* CellWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D3365E2CF788C400827548 /* CellWithTextView.swift */; };
+		D7D336632CF86EC900827548 /* DetailCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D336622CF86EC900827548 /* DetailCellModel.swift */; };
+		D7D336652CF8A6E900827548 /* DateTaskPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D336642CF8A6E900827548 /* DateTaskPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,7 @@
 		D79501632CF4C8C5006B4421 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
 		D79501692CF4CB48006B4421 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		D795016B2CF62FBC006B4421 /* VoiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceManager.swift; sourceTree = "<group>"; };
+		D795016D2CF76187006B4421 /* EditAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAlertController.swift; sourceTree = "<group>"; };
 		D79C0EA42CF0888C001FCB9E /* ToDo List.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ToDo List.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79C0EA72CF0888C001FCB9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79C0EA92CF0888C001FCB9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +96,9 @@
 		D79C0F022CF47368001FCB9E /* TaskTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTitleLabel.swift; sourceTree = "<group>"; };
 		D79C0F042CF483CF001FCB9E /* MicroPhoneButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicroPhoneButton.swift; sourceTree = "<group>"; };
 		D79C0F062CF4A709001FCB9E /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		D7D3365E2CF788C400827548 /* CellWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithTextView.swift; sourceTree = "<group>"; };
+		D7D336622CF86EC900827548 /* DetailCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellModel.swift; sourceTree = "<group>"; };
+		D7D336642CF8A6E900827548 /* DateTaskPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTaskPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +222,7 @@
 			children = (
 				D79C0EEC2CF09B8D001FCB9E /* CellModellProtocol.swift */,
 				D79C0EEE2CF09CB1001FCB9E /* TaskCellModel.swift */,
+				D7D336622CF86EC900827548 /* DetailCellModel.swift */,
 				D795016B2CF62FBC006B4421 /* VoiceManager.swift */,
 			);
 			path = Helpers;
@@ -253,11 +262,8 @@
 		D79C0EEB2CF08ADD001FCB9E /* UI-Components */ = {
 			isa = PBXGroup;
 			children = (
-				D79C0EF02CF09EB2001FCB9E /* TaskTableViewCell.swift */,
-				D79C0EFB2CF0DE40001FCB9E /* SearchTextField.swift */,
-				D79C0F022CF47368001FCB9E /* TaskTitleLabel.swift */,
-				D79C0F042CF483CF001FCB9E /* MicroPhoneButton.swift */,
-				D79C0F062CF4A709001FCB9E /* CustomTabBar.swift */,
+				D7D3365D2CF7885800827548 /* Task Screen */,
+				D7D3365C2CF7881000827548 /* List Screen */,
 			);
 			path = "UI-Components";
 			sourceTree = "<group>";
@@ -269,6 +275,28 @@
 				D79C0F002CF46999001FCB9E /* ViewControllerHideKeyBoard.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		D7D3365C2CF7881000827548 /* List Screen */ = {
+			isa = PBXGroup;
+			children = (
+				D79C0F042CF483CF001FCB9E /* MicroPhoneButton.swift */,
+				D79C0F022CF47368001FCB9E /* TaskTitleLabel.swift */,
+				D79C0F062CF4A709001FCB9E /* CustomTabBar.swift */,
+				D79C0EF02CF09EB2001FCB9E /* TaskTableViewCell.swift */,
+				D795016D2CF76187006B4421 /* EditAlertController.swift */,
+				D79C0EFB2CF0DE40001FCB9E /* SearchTextField.swift */,
+			);
+			path = "List Screen";
+			sourceTree = "<group>";
+		};
+		D7D3365D2CF7885800827548 /* Task Screen */ = {
+			isa = PBXGroup;
+			children = (
+				D7D3365E2CF788C400827548 /* CellWithTextView.swift */,
+				D7D336642CF8A6E900827548 /* DateTaskPicker.swift */,
+			);
+			path = "Task Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -423,12 +451,16 @@
 				D79C0F072CF4A709001FCB9E /* CustomTabBar.swift in Sources */,
 				D79C0EA82CF0888C001FCB9E /* AppDelegate.swift in Sources */,
 				D79501672CF4C8C5006B4421 /* TaskInteractor.swift in Sources */,
+				D7D336652CF8A6E900827548 /* DateTaskPicker.swift in Sources */,
 				D79C0F012CF46999001FCB9E /* ViewControllerHideKeyBoard.swift in Sources */,
 				D79C0EE82CF08AA4001FCB9E /* ToDoListBuilder.swift in Sources */,
 				D79C0EAA2CF0888C001FCB9E /* SceneDelegate.swift in Sources */,
 				D79501652CF4C8C5006B4421 /* TaskRouter.swift in Sources */,
 				D79C0EED2CF09B8D001FCB9E /* CellModellProtocol.swift in Sources */,
+				D7D336632CF86EC900827548 /* DetailCellModel.swift in Sources */,
+				D7D3365F2CF788C400827548 /* CellWithTextView.swift in Sources */,
 				D79C0EB22CF0888C001FCB9E /* ToDo_List.xcdatamodeld in Sources */,
+				D795016E2CF76187006B4421 /* EditAlertController.swift in Sources */,
 				D79C0EFC2CF0DE40001FCB9E /* SearchTextField.swift in Sources */,
 				D79501662CF4C8C5006B4421 /* TaskBuilder.swift in Sources */,
 				D79C0F032CF47368001FCB9E /* TaskTitleLabel.swift in Sources */,
