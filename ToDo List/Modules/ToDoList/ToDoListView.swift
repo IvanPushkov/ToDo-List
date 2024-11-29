@@ -65,6 +65,7 @@ final class ToDoListView: UIViewController {
         super.viewDidLoad()
         presenter?.viewIsReadyToSetUp()
     }
+    
 }
 //MARK: - ToDoListViewProtocol
 extension ToDoListView: ToDoListViewProtocol {

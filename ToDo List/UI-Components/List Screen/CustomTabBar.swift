@@ -13,14 +13,17 @@ import SnapKit
 final class CustomTabBar: UITabBarController {
     var presenter: ToDoListPresenterProtocol?
     var button = UIButton()
+    var titleLabel = UILabel()
    
     override func viewDidLoad() {
         setUpAppereance()
         setUpToNextVCButton()
+        setUpTitle()
     }
     override func viewWillAppear(_ animated: Bool) {
+        titleLabel.text = presenter?.getTabBarTitle()
+        presenter?.viewWillAppear()
         initPresenter()
-        setUpTitle()
     }
     
     //MARK: - UI
@@ -37,7 +40,7 @@ final class CustomTabBar: UITabBarController {
             make.centerX.trailing.leading.equalToSuperview()
             make.bottom.equalTo(tabBar.snp.centerY)
         }
-        title.text = presenter?.getTabBarTitle()
+        self.titleLabel = title
     }
     private func setUpToNextVCButton(){
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .large)

@@ -44,7 +44,6 @@ class CellWithTextView: UITableViewCell {
         textView.font = getFont(isBold: cellModel.isBold, size: cellModel.textHeight)
         textView.textColor = getColorFromModel(color: cellModel.textColor)
         textView.text = cellModel.text
-        setCellHeight(cellModel.cellHeight)
     }
     
     private func  getFont(isBold: Bool, size: CGFloat) -> UIFont{
@@ -63,7 +62,7 @@ class CellWithTextView: UITableViewCell {
         }
     }
     private func setCellHeight(_ height: CGFloat){
-        contentView.snp.makeConstraints { make in
+        self.snp.makeConstraints { make in
             make.height.equalTo(height)
         }
     }

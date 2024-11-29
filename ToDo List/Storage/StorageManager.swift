@@ -15,7 +15,10 @@ class StorageManager{
                                             TaskCellModel(title: "task3", description: "You shall too clean the door", date: .now, status: .notDone)]
     
     func saveNewTask(newTask: TaskCellModel){
-        
+        storage.append(newTask)
+    }
+    func changeTaskAt(_ index: Int, newTask: TaskCellModel){
+        storage[index] = newTask
     }
     func removeTaskAt(index: Int){
         storage.remove(at: index)
@@ -40,5 +43,8 @@ class StorageManager{
     }
     func getSelectedIndex() -> Int?{
         return savedIndex
+    }
+    func removeSelectedIndex(){
+        savedIndex = nil
     }
 }

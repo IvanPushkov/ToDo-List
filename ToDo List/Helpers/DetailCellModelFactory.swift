@@ -24,7 +24,7 @@ protocol DetailCellModelProtocol{
     var isBold: Bool {get set}
     var textHeight: CGFloat {get set}
     var textColor: DetailCellColor {get set}
-    var cellHeight: CGFloat {get set}
+    var type: TypeDetailModel {get set}
 }
 
 struct DetailCellModel: DetailCellModelProtocol{
@@ -32,7 +32,7 @@ struct DetailCellModel: DetailCellModelProtocol{
     var isBold: Bool
     var textHeight: CGFloat
     var textColor: DetailCellColor
-    var cellHeight: CGFloat
+    var type: TypeDetailModel
 }
 
 
@@ -44,13 +44,13 @@ class DetailCellModelFactory{
     func getDetailCellModelForIndex(_  index: Int) -> DetailCellModelProtocol{
         switch index{
         case 0:
-            return DetailCellModel(text: taskCellModel.title, isBold: true, textHeight: 40, textColor: .white, cellHeight: 60)
+            return DetailCellModel(text: taskCellModel.title, isBold: true, textHeight: 40, textColor: .white, type: .title)
         case 1:
-            return DetailCellModel(text: taskCellModel.formateDate(), isBold: false, textHeight: 16, textColor: .gray, cellHeight: 40)
+            return DetailCellModel(text: taskCellModel.formateDate(), isBold: false, textHeight: 16, textColor: .gray, type: .date)
         case 2:
-            return DetailCellModel(text: taskCellModel.description, isBold: false, textHeight: 22, textColor: .white, cellHeight: 100)
+            return DetailCellModel(text: taskCellModel.description, isBold: false, textHeight: 22, textColor: .white, type: .description)
         default:
-           return DetailCellModel(isBold: true, textHeight: 22, textColor: .gray, cellHeight: 22)
+            return DetailCellModel(isBold: true, textHeight: 22, textColor: .gray, type: .title)
         }
     }
 }

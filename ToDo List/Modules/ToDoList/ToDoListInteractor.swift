@@ -19,6 +19,7 @@ protocol ToDoListInteractorProtocol : AnyObject{
     func saveIndexOfSelectedCell(_ index: Int)
     func removeCell()
     func cleanSelectedTask()
+    func reloadCurentTaskList()
 }
 
 final class ToDoListInteractor: ToDoListInteractorProtocol {
@@ -52,7 +53,9 @@ final class ToDoListInteractor: ToDoListInteractorProtocol {
                 return "задач"
             }
     }
-    
+    func reloadCurentTaskList(){
+        corentTaskList = storageManager.getTaskList()
+    }
     func changeStatusCellAt(index: Int) {
         let storageIndex = getOriginIndex(index)
         storageManager.changeStatusTaskAt(storageIndex)
@@ -70,11 +73,12 @@ final class ToDoListInteractor: ToDoListInteractorProtocol {
     }
     func removeCell(){
         storageManager.removeTaskAt(index: storageManager.getSelectedIndex()!)
-        corentTaskList = storageManager.getTaskList()
+        reloadCurentTaskList()
     }
     func cleanSelectedTask(){
         
     }
+    
     
      
    //MARK: - Microphone Settings

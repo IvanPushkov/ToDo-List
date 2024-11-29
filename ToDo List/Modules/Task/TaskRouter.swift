@@ -9,9 +9,13 @@ import UIKit
 
 protocol TaskRouterProtocol : AnyObject{
     var viewController: UIViewController? { get set }
+    func goToListTask()
 }
 
 final class TaskRouter: TaskRouterProtocol {
     var viewController: UIViewController?
+    func goToListTask(){
+        viewController?.navigationController?.popToRootViewController(animated: true)
+    }
 }
 

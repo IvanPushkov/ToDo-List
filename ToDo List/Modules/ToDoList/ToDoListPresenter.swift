@@ -26,6 +26,7 @@ protocol ToDoListPresenterProtocol : AnyObject {
     func longTouch(_ longTouchIsBegan: Bool, _ point: CGPoint)
     func removeButonWasTouch()
     func editButtonWasTouch()
+    func viewWillAppear()
 }
 
 final class ToDoListPresenter: ToDoListPresenterProtocol {
@@ -90,5 +91,8 @@ final class ToDoListPresenter: ToDoListPresenterProtocol {
     func editButtonWasTouch(){
         router?.toTaskView()
     }
-   
+    func viewWillAppear(){
+        interactor?.reloadCurentTaskList()
+        view?.reloadTableView()
+    }
 }

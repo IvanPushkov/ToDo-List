@@ -1,9 +1,3 @@
-//  
-//  TaskInteractor.swift
-//  ToDo List
-//
-//  Created by Ivan Pushkov on 25.11.2024.
-//
 
 import Foundation
 
@@ -11,6 +5,9 @@ import Foundation
 protocol TaskInteractorProtocol : AnyObject{
     var presenter: TaskPresenterProtocol? { get set }
     func getCorentTaskModel() -> TaskCellModel
+    func correctDetailFor(type: TypeDetailModel?, with text: String?)
+    func saveDate(_ date: Date)
+    func reloadDateInStorage()
 }
 
 final class TaskInteractor: TaskInteractorProtocol {
@@ -25,4 +22,27 @@ final class TaskInteractor: TaskInteractorProtocol {
         }
         return TaskCellModel(title: nil, description: nil, date: nil, status: .notDone)
     }
+    func correctDetailFor(type: TypeDetailModel?, with text: String?){
+        switch type{
+        case .title:
+            curentTaskCellModel.title = text
+        case .description:
+            curentTaskCellModel.description = text
+        case .date: break
+        case .none:
+            break
+        }
+    }
+    func saveDate(_ date: Date){
+        curentTaskCellModel.date = date
+    }
+    func reloadDateInStorage(){
+        if let editCellIndex = storageManager.getSelectedIndex(){
+            storageManager.changeTaskAt(editCellIndex, newTask: curentTaskCellModel)
+        } else{
+            storageManager.saveNewTask(newTask: curentTaskCellModel)
+        }
+        storageManager.removeSelectedIndex()
+    }
+   
 }
