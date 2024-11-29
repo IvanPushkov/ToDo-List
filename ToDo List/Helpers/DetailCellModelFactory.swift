@@ -1,9 +1,3 @@
-//
-//  detailCellModel.swift
-//  ToDo List
-//
-//  Created by Ivan Pushkov on 28.11.2024.
-//
 
 import UIKit
 

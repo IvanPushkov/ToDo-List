@@ -63,7 +63,7 @@ final class ToDoListView: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewIsReadyToSetUp()
+        presenter?.setUpMainView()
     }
     
 }

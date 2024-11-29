@@ -46,7 +46,8 @@ class TaskTableViewCell: UITableViewCell{
         }
     }
     private func setNotDoneStyle(){
-        titleLabel.attributedText = NSAttributedString(string: cellTaskModel?.title ?? "")
+        let textAtributes: [NSAttributedString.Key: Any] = [.strikethroughStyle: []]
+        titleLabel.attributedText = NSMutableAttributedString(string: cellTaskModel?.title ?? "", attributes: textAtributes)
         titleLabel.font = UIFont.systemFont(ofSize: 22)
         titleLabel.textColor = .white
         descriptionLabel.textColor = .white

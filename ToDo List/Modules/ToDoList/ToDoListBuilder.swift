@@ -14,7 +14,6 @@ final class ToDoListBuilder {
         let interactor = ToDoListInteractor()
         let router = ToDoListRouter()
         let presenter = ToDoListPresenter()
-        
         presenter.view = view
         presenter.router = router
         presenter.interactor = interactor

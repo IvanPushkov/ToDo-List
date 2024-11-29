@@ -18,8 +18,8 @@ protocol ToDoListInteractorProtocol : AnyObject{
     func filterCellModelsWith(_ text: String?)
     func saveIndexOfSelectedCell(_ index: Int)
     func removeCell()
-    func cleanSelectedTask()
     func reloadCurentTaskList()
+    func loadTasks()
 }
 
 final class ToDoListInteractor: ToDoListInteractorProtocol {
@@ -27,9 +27,17 @@ final class ToDoListInteractor: ToDoListInteractorProtocol {
     let voiceManager = VoiceInputManager()
     var storageManager = StorageManager.shared
     lazy var corentTaskList = self.storageManager.getTaskList()
+    private let taskManager: APIManagerProtocol
+    init(taskManager: APIManagerProtocol = APIManager()) {
+        self.taskManager = taskManager
+    }
+    
     //MARK: - Content Settings
+    func loadTasks(){
+        StorageManager.shared.loadTasks()
+    }
     func getNumberOfrows() -> Int{
-        corentTaskList.count
+        return corentTaskList.count
     }
     func getCellModelAt(index: Int) -> TaskCellModel{
         return corentTaskList[index]
@@ -59,6 +67,7 @@ final class ToDoListInteractor: ToDoListInteractorProtocol {
     func changeStatusCellAt(index: Int) {
         let storageIndex = getOriginIndex(index)
         storageManager.changeStatusTaskAt(storageIndex)
+        reloadCurentTaskList()
         presenter?.updateTaskStatusAt(index)
     }
     private func getOriginIndex(_ index: Int) -> Int{
@@ -74,9 +83,7 @@ final class ToDoListInteractor: ToDoListInteractorProtocol {
     func removeCell(){
         storageManager.removeTaskAt(index: storageManager.getSelectedIndex()!)
         reloadCurentTaskList()
-    }
-    func cleanSelectedTask(){
-        
+        storageManager.removeSelectedIndex()
     }
     
     

@@ -1,36 +1,36 @@
 
 import Foundation
-import Alamofire
 
-struct Task: Codable {
-    let id: Int
-    let todo: String
-    let completed: Bool
-    let userId: Int
-}
-
-struct TasksResponse: Codable {
-    let todos: [Task]
-    let total: Int
-    let skip: Int
-    let limit: Int
-}
-
-protocol TaskManagerProtocol {
-    func fetchTasks(completion: @escaping (Result<[Task], Error>) -> Void)
-}
-
-class TaskManager: TaskManagerProtocol {
-    private let baseURL = "https://dummyjson.com/todos"
+class TaskManager {
+   static let shared = TaskManager()
     
-    func fetchTasks(completion: @escaping (Result<[Task], Error>) -> Void) {
-        AF.request(baseURL, method: .get).responseDecodable(of: TasksResponse.self) { response in
-            switch response.result {
-            case .success(let tasksResponse):
-                completion(.success(tasksResponse.todos))
-            case .failure(let error):
-                completion(.failure(error))
+    func loadTasks(completion: @escaping () -> Void) {
+        APIManager.shared.fetchTasks { tasks in
+            switch tasks{
+            case.success(let tasks):
+                let taskModels = self.convertToLocalTask(tasks: tasks)
+                CoreDataStack.shared.saveTasks(taskModels)
+                DispatchQueue.main.async {
+                               completion()
+                           }
+            case.failure(_):
+                print ("error Of LoadingTasks")
             }
         }
+    }
+    private   func convertToLocalTask(tasks:[Task]) -> [TaskCellModel]{
+        var taskCellModels = [TaskCellModel]()
+        for task in tasks{
+            var status: Status
+            if task.completed{
+                status = .done
+            } else{status = .notDone}
+            let taskCellModel = TaskCellModel(title: task.todo,
+                                              description: nil,
+                                              date: .now,
+                                              status: status)
+            taskCellModels.append(taskCellModel)
+        }
+        return taskCellModels
     }
 }

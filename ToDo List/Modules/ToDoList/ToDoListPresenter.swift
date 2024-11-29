@@ -11,31 +11,32 @@ protocol ToDoListPresenterProtocol : AnyObject {
     var view: ToDoListViewProtocol? { get set }
     var router: ToDoListRouterProtocol? { get set }
     var interactor: ToDoListInteractorProtocol? { get set }
-    // output
+
     func microPhoneTouch()
-    func viewIsReadyToSetUp()
     func tabBarWasTouched()
-    // input
+    func removeButonWasTouch()
+    func editButtonWasTouch()
+    func wasTouchToCellAt(_ indexPath: IndexPath)
+    
     func getTabBarTitle() -> String
     func getNumberOfRowsinSection() -> Int
     func getCellModelFor(indexPath: IndexPath) -> TaskCellModel
-    func wasTouchToCellAt(_ indexPath: IndexPath)
     func updateTaskStatusAt(_ index: Int)
     func setTextToTextField(_ text: String?)
     func textWasEntered(_ text: String?)
     func longTouch(_ longTouchIsBegan: Bool, _ point: CGPoint)
-    func removeButonWasTouch()
-    func editButtonWasTouch()
     func viewWillAppear()
+    func setUpMainView()
 }
 
 final class ToDoListPresenter: ToDoListPresenterProtocol {
     
-    
     weak var view: ToDoListViewProtocol?
     var router: ToDoListRouterProtocol?
     var interactor: ToDoListInteractorProtocol?
-    func viewIsReadyToSetUp(){
+  
+    func setUpMainView(){
+        interactor?.loadTasks()
         view?.setUpMainView()
     }
     func getCellModelFor(indexPath: IndexPath)-> TaskCellModel{
@@ -50,7 +51,6 @@ final class ToDoListPresenter: ToDoListPresenterProtocol {
         return interactor!.getNumberOfTask()
     }
     func tabBarWasTouched(){
-        interactor?.cleanSelectedTask()
         router?.toTaskView()
     }
     func wasTouchToCellAt(_ indexPath: IndexPath){

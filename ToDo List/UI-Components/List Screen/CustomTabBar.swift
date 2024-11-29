@@ -8,6 +8,9 @@
 import UIKit
 import SnapKit
 
+protocol TabBarProtocol{
+    func updateText()
+}
 
 
 final class CustomTabBar: UITabBarController {
@@ -21,9 +24,12 @@ final class CustomTabBar: UITabBarController {
         setUpTitle()
     }
     override func viewWillAppear(_ animated: Bool) {
-        titleLabel.text = presenter?.getTabBarTitle()
+        updateText()
         presenter?.viewWillAppear()
         initPresenter()
+    }
+    func updateText(){
+        titleLabel.text = presenter?.getTabBarTitle()
     }
     
     //MARK: - UI
