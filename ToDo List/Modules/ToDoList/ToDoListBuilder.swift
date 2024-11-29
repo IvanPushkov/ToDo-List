@@ -1,9 +1,3 @@
-//  
-//  ToDoListBuilder.swift
-//  ToDo List
-//
-//  Created by Ivan Pushkov on 22.11.2024.
-//
 
 import UIKit
 
