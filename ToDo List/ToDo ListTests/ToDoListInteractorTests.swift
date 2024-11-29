@@ -1,9 +1,3 @@
-//
-//  ToDo_ListTests.swift
-//  ToDo ListTests
-//
-//  Created by Ivan Pushkov on 22.11.2024.
-//
 
 import XCTest
 @testable import ToDo_List
