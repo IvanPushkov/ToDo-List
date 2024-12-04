@@ -73,7 +73,7 @@ final class ToDoListInteractor: ToDoListInteractorProtocol {
     private func getOriginIndex(_ index: Int) -> Int{
         let corentCellModel = corentTaskList[index]
         let storageIndex = storageManager.getIndexOf(corentCellModel)
-        return storageIndex
+        return storageIndex ?? 0
     }
     //MARK: - Alert Settings
     func saveIndexOfSelectedCell(_ index: Int){

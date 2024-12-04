@@ -2,7 +2,12 @@ import Foundation
 import Speech
 import AVFoundation
 
-class VoiceInputManager {
+protocol VoiceInputManaging {
+    func checkRecordRequests(completion: @escaping (Bool) -> Void)
+    func startSpeechRecognition(completion: @escaping (String?) -> Void)
+    func stopSpeechRecognition()
+}
+class VoiceInputManager: VoiceInputManaging {
 
     private let audioEngine = AVAudioEngine()
     private var recognitionTask: SFSpeechRecognitionTask?

@@ -9,10 +9,10 @@ final class EditAlertController: UIAlertController {
      
     
     func addAlertActionWith(removeAction: @escaping()->(), editAction: @escaping()->() ){
-        var editAction = UIAlertAction(title: "Редактировать", style: .default) { _ in
+        let editAction = UIAlertAction(title: "Редактировать", style: .default) { _ in
             editAction()
         }
-        var removeAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
+        let removeAction = UIAlertAction(title: "Удалить", style: .destructive) { _ in
             removeAction()
         }
         editAction.setValue(UIImage(systemName: "square.and.pencil"), forKey: "image")

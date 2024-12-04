@@ -17,7 +17,7 @@ class ToDoListInteractorTests: XCTestCase {
         mockAPIManager = MockAPIManager()
 
     }
-
+  
     override func tearDown() {
         interactor = nil
         mockStorageManager = nil

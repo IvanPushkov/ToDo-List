@@ -3,11 +3,30 @@
 import Foundation
 import CoreData
 
-class StorageManager{
+protocol StorageManagerForToDoList{
+    func saveNewTask(newTask: TaskCellModel) -> Void
+    func changeTaskAt(_ index: Int, newTask: TaskCellModel)-> Void
+    func removeTaskAt(index: Int)
+    func loadTasks()
+    func getTaskList() -> [TaskCellModel]
+    func changeStatusTaskAt(_ index: Int)
+    func getIndexOf(_ model: TaskCellModel) -> Int?
+    func saveSelectedIndex(_ index: Int)
+    func getSelectedIndex() -> Int?
+    func removeSelectedIndex()
+}
+
+
+class StorageManager: StorageManagerForToDoList{
     static let shared = StorageManager()
     private var savedIndex: Int?
     private(set) var storage: [TaskCellModel] = []
     private let context = CoreDataStack.shared.context
+    private let coreDataSteck: CoreDataStackProtocol
+    
+    init(coreDataStack: CoreDataStackProtocol = CoreDataStack.shared){
+        self.coreDataSteck = coreDataStack
+    }
     
     func saveNewTask(newTask: TaskCellModel) {
         let entity = TaskEntity(context: context)
@@ -20,7 +39,7 @@ class StorageManager{
     }
     
     private func saveContext(){
-        CoreDataStack.shared.saveContext()
+        coreDataSteck.saveContext()
     }
     func changeTaskAt(_ index: Int, newTask: TaskCellModel){
         let fetchRequest: NSFetchRequest<TaskEntity> = TaskEntity.fetchRequest()
@@ -65,14 +84,14 @@ class StorageManager{
     func changeStatusTaskAt(_ index: Int){
         storage[index].changeStatus()
     }
-    func getIndexOf(_ model: TaskCellModel) -> Int{
+    func getIndexOf(_ model: TaskCellModel) -> Int?{
         for (index,storageModel) in storage.enumerated(){
             if model === storageModel{
                 return index
             }
         }
         print("Index is not found")
-        return 0
+        return nil
     }
     func saveSelectedIndex(_ index: Int){
         savedIndex = index

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D76E34862D006A980077371C /* MockVoiceInputManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76E34852D006A980077371C /* MockVoiceInputManager.swift */; };
+		D76E34882D006ADA0077371C /* MockStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76E34872D006ADA0077371C /* MockStorageManager.swift */; };
+		D76E348A2D006EA40077371C /* StorageManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76E34892D006EA40077371C /* StorageManagerTest.swift */; };
+		D76E348C2D006F480077371C /* MockCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76E348B2D006F480077371C /* MockCoreDataStack.swift */; };
 		D79501642CF4C8C5006B4421 /* TaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795015F2CF4C8C5006B4421 /* TaskPresenter.swift */; };
 		D79501652CF4C8C5006B4421 /* TaskRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79501602CF4C8C5006B4421 /* TaskRouter.swift */; };
 		D79501662CF4C8C5006B4421 /* TaskBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79501612CF4C8C5006B4421 /* TaskBuilder.swift */; };
@@ -42,7 +46,7 @@
 		D7B348282CF9EE6E00A7E79C /* CoreDateStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B348272CF9EE6E00A7E79C /* CoreDateStack.swift */; };
 		D7B3482A2CF9F77100A7E79C /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B348292CF9F77100A7E79C /* TaskManager.swift */; };
 		D7B3482C2CF9FD1900A7E79C /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B3482B2CF9FD1900A7E79C /* LoadingViewController.swift */; };
-		D7B348312CFA1EDC00A7E79C /* MockToDoListModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B348302CFA1EDC00A7E79C /* MockToDoListModule.swift */; };
+		D7B348312CFA1EDC00A7E79C /* MockAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B348302CFA1EDC00A7E79C /* MockAPIManager.swift */; };
 		D7D3365F2CF788C400827548 /* CellWithTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D3365E2CF788C400827548 /* CellWithTextView.swift */; };
 		D7D336632CF86EC900827548 /* DetailCellModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D336622CF86EC900827548 /* DetailCellModelFactory.swift */; };
 		D7D336652CF8A6E900827548 /* DateTaskPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D336642CF8A6E900827548 /* DateTaskPicker.swift */; };
@@ -59,6 +63,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D76E34852D006A980077371C /* MockVoiceInputManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockVoiceInputManager.swift; sourceTree = "<group>"; };
+		D76E34872D006ADA0077371C /* MockStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorageManager.swift; sourceTree = "<group>"; };
+		D76E34892D006EA40077371C /* StorageManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerTest.swift; sourceTree = "<group>"; };
+		D76E348B2D006F480077371C /* MockCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataStack.swift; sourceTree = "<group>"; };
 		D795015F2CF4C8C5006B4421 /* TaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPresenter.swift; sourceTree = "<group>"; };
 		D79501602CF4C8C5006B4421 /* TaskRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRouter.swift; sourceTree = "<group>"; };
 		D79501612CF4C8C5006B4421 /* TaskBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskBuilder.swift; sourceTree = "<group>"; };
@@ -95,7 +103,7 @@
 		D7B348272CF9EE6E00A7E79C /* CoreDateStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDateStack.swift; sourceTree = "<group>"; };
 		D7B348292CF9F77100A7E79C /* TaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		D7B3482B2CF9FD1900A7E79C /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		D7B348302CFA1EDC00A7E79C /* MockToDoListModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockToDoListModule.swift; sourceTree = "<group>"; };
+		D7B348302CFA1EDC00A7E79C /* MockAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIManager.swift; sourceTree = "<group>"; };
 		D7D3365E2CF788C400827548 /* CellWithTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithTextView.swift; sourceTree = "<group>"; };
 		D7D336622CF86EC900827548 /* DetailCellModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCellModelFactory.swift; sourceTree = "<group>"; };
 		D7D336642CF8A6E900827548 /* DateTaskPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTaskPicker.swift; sourceTree = "<group>"; };
@@ -121,6 +129,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D76E34842D006A710077371C /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D76E34852D006A980077371C /* MockVoiceInputManager.swift */,
+				D76E34872D006ADA0077371C /* MockStorageManager.swift */,
+				D7B348302CFA1EDC00A7E79C /* MockAPIManager.swift */,
+				D76E348B2D006F480077371C /* MockCoreDataStack.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		D795015E2CF4C82A006B4421 /* Task */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,8 +188,9 @@
 		D79C0EC02CF08892001FCB9E /* ToDo ListTests */ = {
 			isa = PBXGroup;
 			children = (
+				D76E34842D006A710077371C /* Mocks */,
 				D79C0EC12CF08892001FCB9E /* ToDoListInteractorTests.swift */,
-				D7B348302CFA1EDC00A7E79C /* MockToDoListModule.swift */,
+				D76E34892D006EA40077371C /* StorageManagerTest.swift */,
 			);
 			path = "ToDo ListTests";
 			sourceTree = "<group>";
@@ -403,8 +423,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D76E348C2D006F480077371C /* MockCoreDataStack.swift in Sources */,
 				D79C0EFF2CF4602A001FCB9E /* ColorLibrery.swift in Sources */,
-				D7B348312CFA1EDC00A7E79C /* MockToDoListModule.swift in Sources */,
+				D76E34882D006ADA0077371C /* MockStorageManager.swift in Sources */,
+				D7B348312CFA1EDC00A7E79C /* MockAPIManager.swift in Sources */,
 				D79C0F052CF483CF001FCB9E /* MicroPhoneButton.swift in Sources */,
 				D79C0EE72CF08AA4001FCB9E /* ToDoListRouter.swift in Sources */,
 				D7B348282CF9EE6E00A7E79C /* CoreDateStack.swift in Sources */,
@@ -423,6 +445,7 @@
 				D79C0EA82CF0888C001FCB9E /* AppDelegate.swift in Sources */,
 				D79501672CF4C8C5006B4421 /* TaskInteractor.swift in Sources */,
 				D7D336652CF8A6E900827548 /* DateTaskPicker.swift in Sources */,
+				D76E34862D006A980077371C /* MockVoiceInputManager.swift in Sources */,
 				D79C0F012CF46999001FCB9E /* ViewControllerHideKeyBoard.swift in Sources */,
 				D79C0EE82CF08AA4001FCB9E /* ToDoListBuilder.swift in Sources */,
 				D79C0EAA2CF0888C001FCB9E /* SceneDelegate.swift in Sources */,
@@ -445,6 +468,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79C0EC22CF08892001FCB9E /* ToDoListInteractorTests.swift in Sources */,
+				D76E348A2D006EA40077371C /* StorageManagerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,7 +544,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -574,7 +598,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

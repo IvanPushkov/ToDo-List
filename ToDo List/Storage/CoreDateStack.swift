@@ -1,7 +1,11 @@
 
 import CoreData
-
-class CoreDataStack {
+protocol CoreDataStackProtocol{
+    var context: NSManagedObjectContext {get}
+    func saveContext()
+   
+}
+class CoreDataStack: CoreDataStackProtocol {
     static let shared = CoreDataStack()
 
     private init() {}
